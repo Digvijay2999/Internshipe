@@ -1,0 +1,168 @@
+/* ---------- Global Styles ---------- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7f9fc;
+    color: #0f172a;
+}
+
+/* ---------- Header ---------- */
+header {
+    text-align: center;
+    padding: 40px 16px;
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+    color: white;
+}
+
+/* ---------- Navigation (Flexbox) ---------- */
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 12px;
+
+    /* Enables Flexbox for navigation */
+    display: flex;
+
+    /* Aligns navigation items in a row */
+    flex-direction: row;
+
+    /* Centers items horizontally */
+    justify-content: center;
+
+    /* Aligns items vertically */
+    align-items: center;
+
+    /* Allows wrapping on small screens */
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #2563eb;
+    font-weight: bold;
+    padding: 8px 12px;
+}
+
+/* ---------- Main Layout ---------- */
+main {
+    max-width: 1000px;
+    margin: auto;
+    padding: 16px;
+
+    /* Enables Flexbox for page sections */
+    display: flex;
+
+    /* Stacks sections vertically by default */
+    flex-direction: column;
+
+    gap: 24px;
+}
+
+section {
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+}
+
+/* ---------- About ---------- */
+.about-article {
+    /* Flexbox used to align image and text */
+    display: flex;
+
+    /* Stack content vertically */
+    flex-direction: column;
+
+    /* Center content horizontally */
+    align-items: center;
+
+}
+
+.about-article img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 12px;
+}
+
+/* ---------- Skills List (Flexbox) ---------- */
+.skills-list {
+    list-style: none;
+    padding: 0;
+
+    /* Enables Flexbox for skills */
+    display: flex;
+
+    /* Aligns skills in a row */
+    flex-direction: row;
+
+    /* Allows skills to move to next line */
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+.skills-list li {
+    background: #e5e7eb;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+/* ---------- Cards Row (Flexbox) ---------- */
+.cards-row {
+    /* Enables horizontal card layout */
+    display: flex;
+
+    /* Space between cards */
+    gap: 20px;
+
+    /* Wrap cards on smaller screens */
+    flex-wrap: wrap;
+}
+
+article {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(12, 18, 31, 0.11);
+    display: block;
+    padding: 6px;
+}
+
+article.card {
+    background: #ffffff;
+    padding: 16px;
+    border-radius: 8px;
+
+    /* Allows cards to grow evenly */
+    flex: 1;
+
+    min-width: 250px;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    text-align: center;
+    padding: 16px;
+    color: #6b7280;
+}
+
+/* ---------- Responsive Layout ---------- */
+@media (min-width: 768px) {
+    main {
+        /* Sections align side-by-side on large screens */
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    section {
+        flex: 1;
+        min-width: 300px;
+    }
+}
