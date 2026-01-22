@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <form class="contact-form">
+
+        <h2 class="heading">Contact Us</h2>
+
+        <!-- Group 1: Personal Details -->
+        <fieldset>
+            <legend>Personal Information</legend>
+
+            <!-- Label linked with input using 'for' and 'id' -->
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required maxlength="30" placeholder="Enter your name">
+        </fieldset>
+
+        <!-- Group 2: Contact Details -->
+        <fieldset>
+            <legend>Contact Details</legend>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required placeholder="example@gmail.com">
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="10 digit number" required>
+        </fieldset>
+
+        <!-- Group 3: Message -->
+        <fieldset>
+            <legend>Message</legend>
+
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" required maxlength="200"
+                placeholder="Write your message here..."></textarea>
+        </fieldset>
+
+        <button type="submit">Send Message</button>
+
+    </form>
+
+    <footer>
+        <p>&copy; 2026 Digvijay | All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
