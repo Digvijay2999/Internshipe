@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <form id="registerForm" novalidate>
+        <h2>Register</h2>
+
+        <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name">
+            <small class="error"></small>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email">
+            <small class="error"></small>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password">
+            <small class="error"></small>
+        </div>
+
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword">
+            <small class="error"></small>
+        </div>
+
+        <button type="submit">Create Account</button>
+    </form>
+
+    <!-- Success message section (hidden by default) -->
+    <section id="successMessage" class="hidden">
+        <h2>Registration Successful</h2>
+        <p>Your account has been created successfully.</p>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
