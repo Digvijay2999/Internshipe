@@ -1,0 +1,84 @@
+/* Task10 — Weather App styles */
+:root{
+  --bg1: #0f172a; /* deep navy */
+  --bg2: #0b2a4a; /* tealish */
+  --card: rgba(255,255,255,0.06);
+  --muted: rgba(255,255,255,0.8);
+  --accent: #06b6d4; /* cyan */
+  --accent-2: #7c3aed; /* purple */
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(135deg,var(--bg1),var(--bg2) 70%);
+  color: #e6eef8;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:2rem;
+}
+
+.container{
+  width:100%;
+  max-width:720px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border-radius:14px;
+  padding:28px;
+  box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+  backdrop-filter: blur(6px) saturate(140%);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+h1{margin:0 0 16px 0;font-size:1.6rem}
+
+.input-area{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10px;
+  align-items:end;
+}
+.input-area label{font-size:.8rem;color:var(--muted)}
+.input-area input{
+  grid-column: span 1;
+  padding:10px 12px;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  color:inherit;
+  outline:none;
+  transition: box-shadow .15s ease, transform .05s ease;
+}
+.input-area input:focus{box-shadow:0 4px 18px rgba(7,22,46,0.6);transform:translateY(-1px)}
+.input-area .btn{
+  grid-column: 1 / -1;
+  padding:12px 16px;
+  border-radius:10px;
+  background: linear-gradient(90deg,var(--accent),var(--accent-2));
+  color:white;
+  border: none;
+  cursor: pointer;
+  font-weight:600;
+  letter-spacing: .2px;
+  margin-top:6px;
+}
+.input-area .btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(8,15,30,0.4)}
+
+#loading{margin-top:12px;color:var(--muted);display:flex;align-items:center;gap:8px}
+#loading.hidden{display:none}
+#loading::before{content:'';width:14px;height:14px;border-radius:50%;display:inline-block;border:3px solid rgba(255,255,255,0.12);border-top-color:var(--accent);animation:spin 0.9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.error{color:#ffb4b4;margin-top:10px;font-weight:600}
+.result{margin-top:18px;background: rgba(255,255,255,0.02);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
+.result h3{margin:0 0 8px 0}
+.result p{margin:6px 0}
+
+@media (max-width:560px){
+  .input-area{grid-template-columns:1fr}
+  .container{padding:18px}
+}

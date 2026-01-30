@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <h1>Weather App 🌦️</h1>
+
+        <!-- City Input -->
+        <section class="input-area">
+            <label for="cityInput" class="sr-only">City or Country</label>
+            <input type="text" id="cityInput" required placeholder="Search city or country" aria-label="City or Country" autocomplete="off">
+            <button id="getWeather" class="btn">Get Weather</button>
+        </section>
+
+        <!-- Loading Indicator -->
+        <p id="loading" class="hidden">Fetching weather...</p>
+
+        <!-- Error Message -->
+        <p id="error" class="error"></p>
+
+        <!-- Result -->
+        <section id="result" class="result"></section>
+    </main>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

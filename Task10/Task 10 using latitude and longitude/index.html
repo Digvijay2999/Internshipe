@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <h1>Weather App 🌤</h1>
+
+        <!-- Input Section -->
+        <section class="input-area">
+            <label for="latitude">Latitude</label>
+            <input type="number" id="latitude" placeholder="Latitude" step="0.01" min="-90" max="90" aria-label="Latitude">
+            <label for="longitude">Longitude</label>
+            <input type="number" id="longitude" placeholder="Longitude" step="0.01" min="-180" max="180" aria-label="Longitude">
+            <button id="getWeather" class="btn">Get Weather</button>
+        </section>
+
+        <!-- Loading Indicator -->
+        <p id="loading" class="hidden">Loading weather data...</p>
+
+        <!-- Error Message -->
+        <p id="error" class="error"></p>
+
+        <!-- Result Display -->
+        <section id="result" class="result"></section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

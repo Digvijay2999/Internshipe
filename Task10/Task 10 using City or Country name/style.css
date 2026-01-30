@@ -1,0 +1,33 @@
+/* Restyle for City/Country search weather app */
+:root{
+  --bg1:#071029;
+  --bg2:#083049;
+  --card: rgba(255,255,255,0.04);
+  --muted: rgba(255,255,255,0.78);
+  --accent: #06b6d4;
+  --accent-2: #7c3aed;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;padding:2rem;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--bg1),var(--bg2));font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;color:#e8f4ff}
+.container{width:100%;max-width:720px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:28px;border-radius:14px;box-shadow:0 10px 40px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+h1{margin:0 0 14px 0;font-size:1.4rem}
+.input-area{display:flex;gap:10px;align-items:center}
+.input-area .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.input-area input{flex:1;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:inherit;outline:none;font-size:1rem}
+.input-area input:focus{box-shadow:0 8px 30px rgba(6,22,42,0.6);transform:translateY(-1px)}
+.input-area .btn{padding:11px 16px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none;color:white;font-weight:700;cursor:pointer}
+.input-area .btn[disabled]{opacity:0.6;cursor:default}
+#loading{margin-top:12px;color:var(--muted);display:flex;align-items:center;gap:8px}
+#loading.hidden{display:none}
+#loading::before{content:'';width:14px;height:14px;border-radius:50%;display:inline-block;border:3px solid rgba(255,255,255,0.12);border-top-color:var(--accent);animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.error{color:#ffb4b4;margin-top:12px;font-weight:600}
+.result{margin-top:18px;background:rgba(255,255,255,0.02);padding:16px;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
+.result h3{margin:0 0 6px 0}
+.result p{margin:6px 0}
+@media (max-width:560px){
+  .input-area{flex-direction:column;align-items:stretch}
+  .input-area .btn{width:100%}
+}
