@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Grid Layout</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <div class="layout">
+        <header class="header">
+            <div class="brand">My Dashboard</div>
+            <nav>
+                <a class="search" href="#">Search</a>
+                <button class="btn btn-ghost">Sign out</button>
+            </nav>
+        </header>
+
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="profile">
+                    <div class="avatar" aria-hidden="true">MD</div>
+                    <div class="profile-info">
+                        <div class="name">User Name</div>
+                        <div class="role muted">Admin</div>
+                    </div>
+                </div>
+                <button class="btn btn-primary add-card" type="button">+ Add Card</button>
+            </div>
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Settings</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <section class="card-grid" id="cardGrid">
+                <div class="card large">Large Card</div>
+                <div class="card">Card 1</div>
+                <div class="card tall">Tall Card</div>
+                <div class="card">Card 2</div>
+                <div class="card wide">Wide Card</div>
+                <div class="card">Card 3</div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            &copy; 2024 My Dashboard By Digvijay | All rights reserved.
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

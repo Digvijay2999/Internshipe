@@ -1,0 +1,225 @@
+/* ================================
+   GLOBAL VARIABLES, RESET & BASE STYLES
+   ================================ */
+
+:root {
+  --bg: #f3f6fb;
+  --surface: #ffffff;
+  --muted: #6b7280;
+  --text: #0f172a;
+  --accent: #2563eb; /* primary */
+  --accent-2: #06b6d4; /* secondary */
+  --header-grad: linear-gradient(90deg,#0b1220 0%, #111827 100%);
+  --sidebar-bg: #0b1220;
+  --card-shadow: 0 10px 30px rgba(2,6,23,0.08);
+  --card-shadow-hover: 0 18px 36px rgba(2,6,23,0.12);
+  --radius: 12px;
+  --gap: 1.25rem;
+  --max-width: 1200px;
+  --transition: 240ms cubic-bezier(.2,.8,.2,1);
+}
+
+/* Remove default browser spacing and make box sizing predictable */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base typography and background for readability */
+body {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  line-height: 1.6;
+  color: var(--text);
+  background: radial-gradient(circle at 10% 10%, rgba(37,99,235,0.04), transparent 12%), var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: var(--accent); text-decoration: none; transition: color var(--transition); }
+a:hover { color: var(--accent-2); }
+
+/* ================================
+   MAIN PAGE GRID LAYOUT (KEEP GRID RULES)
+   ================================ */
+
+.layout {
+  display: grid;                /* Activates CSS Grid */
+  min-height: 100vh;             /* Full viewport height */
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+  gap: 0; /* keep layout crisp */
+}
+
+/* ================================
+   GRID AREA ASSIGNMENT (POLISHED)
+   ================================ */
+
+/* Header spans full width */
+.header {
+  grid-area: header;             /* Assigns header to grid area */
+  padding: 1.25rem 1.5rem;
+  background: var(--header-grad);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0 2px 10px rgba(2,6,23,0.06);
+}
+
+.header .brand { font-weight: 700; letter-spacing: -0.02em; font-size: 1.125rem; }
+.header nav { display: flex; gap: 0.75rem; align-items: center; }
+.header .search { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.9); padding: 0.5rem 0.75rem; border-radius: 999px; }
+
+/* Sidebar placed in left column */
+.sidebar {
+  grid-area: sidebar;
+  padding: 1.25rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00)), var(--sidebar-bg);
+  color: rgba(255,255,255,0.92);
+  min-height: 100%;
+}
+
+.sidebar .nav-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.sidebar .nav-list a { padding: 0.5rem 0.6rem; border-radius: 8px; color: rgba(255,255,255,0.85); display: block }
+.sidebar .nav-list a:hover { background: rgba(255,255,255,0.03); color: #fff; transform: translateX(4px); }
+
+/* Main content area (now spans full width of the main column) */
+.main {
+  grid-area: main;
+  padding: 2rem;
+  max-width: none; /* allow grid to use full width */
+  margin: 0;
+  width: 100%;
+}
+
+.main h1 { font-size: 1.75rem; margin-bottom: 0.5rem; }
+.main p.lead { color: var(--muted); margin-bottom: 1rem; }
+
+/* Footer spans full width */
+.footer {
+  grid-area: footer;
+  padding: 1rem 1.5rem;
+  background: #071028;
+  color: rgba(255,255,255,0.9);
+  text-align: center;
+}
+
+/* ================================
+   CARD GRID (NESTED GRID) — keep behaviour
+   ================================ */
+.card-grid {
+  display: grid;                 /* Grid inside grid (nested grid) */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--gap);                  /* Space between cards */
+  grid-auto-rows: minmax(120px, auto); /* keep rows consistent when items vary */
+  align-items: start;
+}
+
+/* Sidebar top area with profile + action */
+.sidebar-top { display:flex; gap:0.75rem; align-items:center; justify-content:space-between; margin-bottom:1rem; }
+.profile { display:flex; gap:0.6rem; align-items:center; }
+.avatar { width:40px; height:40px; border-radius:999px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:#fff; display:inline-flex; align-items:center; justify-content:center; font-weight:700; }
+.sidebar .nav-list li a { display:block; padding:0.5rem 0.6rem; border-radius:8px; transition: transform var(--transition), background var(--transition); }
+.add-card { margin-left: auto; }
+
+/* small pop animation for new cards */
+.card.new { animation: pop .28s var(--transition) both; transform-origin: center; }
+@keyframes pop { from { opacity: 0; transform: translateY(-10px) scale(0.98); } to { opacity:1; transform: translateY(0) scale(1); } }
+
+/* ================================
+   CARD BASE STYLING (ENHANCED)
+   ================================ */
+.card {
+  background-color: var(--surface);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  display: flex; /* keep flex behavior */
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  min-height: 120px;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  border: 1px solid rgba(15,23,42,0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::after {
+  content: "";
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, transparent 0%, rgba(2,6,23,0.02) 100%);
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.card .meta { display:block; text-align:center; color:var(--muted); font-weight:500 }
+.card .value { font-size:1.25rem; font-weight:700; color:var(--text); }
+
+/* ================================
+   DIFFERENT CARD SIZES USING GRID SPAN (KEEP THESE)
+   ================================ */
+.card.large {
+  grid-column: span 2;            /* Occupies 2 columns */
+  grid-row: span 2;               /* Occupies 2 rows */
+}
+
+/* Wide card spans two columns */
+.card.wide {
+  grid-column: span 2;
+}
+
+/* Tall card spans two rows */
+.card.tall {
+  grid-row: span 2;
+}
+
+/* ================================
+   UTILITY COMPONENTS
+   ================================ */
+.btn { display:inline-flex; align-items:center; gap:0.5rem; padding:0.55rem 0.9rem; border-radius:8px; border: none; cursor:pointer; }
+.btn-primary { background: var(--accent); color: #fff; box-shadow: 0 6px 18px rgba(37,99,235,0.12); }
+/* Hover/interaction behavior moved to JavaScript to keep styling and behavior decoupled */
+.btn-ghost { background: transparent; border: 1px solid rgba(15,23,42,0.06); color: var(--text); }
+
+/* Focus states for accessibility */
+:focus-visible { outline: 3px solid rgba(37,99,235,0.15); outline-offset: 3px; border-radius: 6px; }
+
+/* ================================
+   RESPONSIVE DESIGN (MOBILE) — keep behavior and adapt styles
+   ================================ */
+@media (max-width: 600px) {
+  .layout {
+    grid-template-columns: 1fr;   /* Single column layout */
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+      "header"
+      "sidebar"
+      "main"
+      "footer";
+  }
+
+  .header { padding: 0.9rem; }
+  .sidebar { padding: 0.9rem; }
+  .main { padding: 1rem; }
+  .card.large, .card.wide, .card.tall { grid-column: span 1; grid-row: span 1; }
+}
+
+/* ================================
+   REAL-WORLD LAYOUT OPTIMIZATION
+   ================================ */
+.main { max-width: var(--max-width); margin: auto; }
+
+/* small helpers */
+.muted { color: var(--muted); }
+.center { text-align: center; }
+
