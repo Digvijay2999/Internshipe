@@ -1,0 +1,243 @@
+/* ================================
+       GLOBAL RESET & BASE STYLES
+       ================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, sans-serif;
+    background: #f3f4f6;
+    line-height: 1.6;
+}
+
+/* ================================
+       GRID IMAGE GALLERY
+       ================================ */
+
+/*
+      .gallery uses CSS Grid to create
+      a responsive image layout.
+    */
+.gallery {
+    display: grid;
+
+    /* Automatically adjusts columns based on screen size */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+    gap: 1rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Thumbnail images */
+.gallery img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+
+    cursor: pointer;
+    border-radius: 8px;
+
+    /* Smooth hover feedback */
+    transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+/* ================================
+       MODAL OVERLAY
+       ================================ */
+
+/*
+      .modal acts as a full-screen overlay.
+      It is hidden by default.
+    */
+.modal {
+    position: fixed;
+    inset: 0;
+
+    /* Softer, layered overlay with blur for depth */
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.8));
+    backdrop-filter: blur(6px);
+
+    /* Center modal content */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Hidden initially */
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.28s ease, backdrop-filter 0.28s ease;
+    z-index: 1000;
+}
+
+/* Active modal state */
+.modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ================================
+       MODAL CONTENT
+       ================================ */
+
+.modal-content {
+    position: relative;
+    width: min(1100px, 95%);
+    max-height: calc(100vh - 48px);
+    padding: 12px;
+
+    /* keep background slightly translucent to let the overlay show through */
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    animation: modal-pop 260ms cubic-bezier(.2, .9, .3, 1);
+}
+
+@keyframes modal-pop {
+    from {
+        transform: scale(0.98);
+        opacity: 0
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+/* image container keeps image centered and constrained */
+.modal-content .img-wrap {
+    width: 100%;
+    max-height: calc(100vh - 220px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 20px 40px rgba(2, 6, 23, 0.5);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.02));
+}
+
+.modal-content img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: calc(100vh - 150px);
+    object-fit: contain;
+    border-radius: 8px;
+    transition: transform 0.32s ease, filter 0.32s ease;
+}
+
+/* Subtle zoom on hover for desktop */
+.modal-content img:hover {
+    transform: scale(1.01);
+}
+
+/* Caption under the image */
+.modal-caption {
+    margin-top: 14px;
+    color: #e5e7eb;
+    font-size: 0.95rem;
+    text-align: center;
+    max-width: 92%;
+}
+
+/* Navigation arrows */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    border: none;
+    width: 44px;
+    height: 44px;
+    margin: 0 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 6px 14px rgba(2, 6, 23, 0.45);
+    transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.nav-btn:hover {
+    transform: translateY(-50%) scale(1.06);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.nav-btn.left {
+    left: 12px;
+}
+
+.nav-btn.right {
+    right: 12px;
+}
+
+/* Close button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    background: rgba(0, 0, 0, 0.55);
+    color: white;
+    border: none;
+    font-size: 1.1rem;
+
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(2, 6, 23, 0.45);
+}
+
+/* Accessibility focus styles */
+.nav-btn:focus,
+.close-btn:focus {
+    outline: 3px solid rgba(99, 102, 241, 0.18);
+}
+
+/* Responsive tweaks */
+@media (max-width: 640px) {
+    .modal-content {
+        padding: 8px;
+    }
+
+    .nav-btn {
+        display: none;
+    }
+
+    .modal-caption {
+        font-size: 0.9rem;
+    }
+}
+
+/* Thumbnails get a zoom cursor and visible focus ring */
+.gallery img {
+    cursor: zoom-in;
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.gallery img:active {
+    transform: scale(0.99);
+}
+
+.gallery img:focus {
+    outline: 3px solid rgba(99, 102, 241, 0.18);
+}

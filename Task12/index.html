@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Image Gallary with Modal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- ================================
+       IMAGE GALLERY
+       ================================ -->
+
+    <section class="gallery">
+        <!-- Thumbnails (data-large holds full image URL) -->
+        <img src="https://picsum.photos/id/1011/400/300" data-large="https://picsum.photos/id/1011/1000/700"
+            alt="Gallery image 1">
+        <img src="https://picsum.photos/id/1015/400/300" data-large="https://picsum.photos/id/1015/1000/700"
+            alt="Gallery image 2">
+        <img src="https://picsum.photos/id/1025/400/300" data-large="https://picsum.photos/id/1025/1000/700"
+            alt="Gallery image 3">
+        <img src="https://picsum.photos/id/1035/400/300" data-large="https://picsum.photos/id/1035/1000/700"
+            alt="Gallery image 4">
+        <img src="https://picsum.photos/id/1016/400/300" data-large="https://picsum.photos/id/1016/1000/700"
+            alt="Gallery image 1">
+        <img src="https://picsum.photos/id/1036/400/300" data-large="https://picsum.photos/id/1036/1000/700"
+            alt="Gallery image 2">
+        <img src="https://picsum.photos/id/1028/400/300" data-large="https://picsum.photos/id/1028/1000/700"
+            alt="Gallery image 3">
+        <img src="https://picsum.photos/id/1039/400/300" data-large="https://picsum.photos/id/1039/1000/700"
+            alt="Gallery image 4">
+        <img src="https://picsum.photos/id/1018/400/300" data-large="https://picsum.photos/id/1018/1000/700"
+            alt="Gallery image 1">
+        <img src="https://picsum.photos/id/1019/400/300" data-large="https://picsum.photos/id/1019/1000/700"
+            alt="Gallery image 2">
+        <img src="https://picsum.photos/id/1024/400/300" data-large="https://picsum.photos/id/1024/1000/700"
+            alt="Gallery image 3">
+        <img src="https://picsum.photos/id/1045/400/300" data-large="https://picsum.photos/id/1045/1000/700"
+            alt="Gallery image 4">
+        <img src="https://picsum.photos/id/1044/400/300" data-large="https://picsum.photos/id/1044/1000/700"
+            alt="Gallery image 1">
+        <img src="https://picsum.photos/id/1043/400/300" data-large="https://picsum.photos/id/1043/1000/700"
+            alt="Gallery image 2">
+        <img src="https://picsum.photos/id/1050/400/300" data-large="https://picsum.photos/id/1050/1000/700"
+            alt="Gallery image 3">
+        <img src="https://picsum.photos/id/1057/400/300" data-large="https://picsum.photos/id/1057/1000/700"
+            alt="Gallery image 4">
+        <img src="https://picsum.photos/id/1055/400/300" data-large="https://picsum.photos/id/1055/1000/700"
+            alt="Gallery image 1">
+        <img src="https://picsum.photos/id/1062/400/300" data-large="https://picsum.photos/id/1062/1000/700"
+            alt="Gallery image 2">
+        <img src="https://picsum.photos/id/1067/400/300" data-large="https://picsum.photos/id/1067/1000/700"
+            alt="Gallery image 3">
+        <img src="https://picsum.photos/id/1070/400/300" data-large="https://picsum.photos/id/1070/1000/700"
+            alt="Gallery image 4">
+
+    </section>
+
+    <!-- ================================
+       MODAL (HIDDEN INITIALLY)
+       ================================ -->
+
+    <!-- <div class="modal" id="modal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeBtn">&times;</button>
+            <img id="modalImage" alt="Enlarged image">
+        </div>
+    </div> -->
+    <div class="modal" id="modal">
+        <div class="modal-content" role="dialog" aria-modal="true">
+            <button class="close-btn" id="closeBtn" aria-label="Close">×</button>
+            <button class="nav-btn left" aria-label="Previous">‹</button>
+            <div class="img-wrap">
+                <img id="modalImage" alt="Enlarged image">
+            </div>
+            <button class="nav-btn right" aria-label="Next">›</button>
+            <div class="modal-caption">A short caption or description here</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
