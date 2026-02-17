@@ -1,0 +1,205 @@
+/* =====================================
+   ROOT VARIABLES (DEFAULT THEME)
+   ===================================== */
+
+/*
+   CSS variables are defined in :root.
+   These act as global design tokens.
+   All components reference these variables,
+   so changing them updates the entire UI.
+*/
+:root {
+  --bg-color: #ffffff;
+  --text-color: #111827;
+  --accent-color: #2563eb;
+  --card-bg: #f3f4f6;
+  --border-color: #e5e7eb;
+}
+
+/* =====================================
+   DARK THEME VARIABLES
+   ===================================== */
+
+/*
+   When body has class="dark",
+   these variable values override :root.
+   No need to rewrite component styles.
+*/
+body.dark {
+  --bg-color: #111827;
+  --text-color: #f9fafb;
+  --accent-color: #3b82f6;
+  --card-bg: #1f2937;
+  --border-color: #374151;
+}
+
+/* =====================================
+   GLOBAL STYLES USING VARIABLES
+   ===================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*
+   Notice: No hard-coded colors.
+   Everything uses CSS variables.
+   This minimizes duplication.
+*/
+body {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.25s ease, color 0.25s ease;
+  line-height: 1.6;
+  padding: 2rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =====================================
+   HEADER
+   ===================================== */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+/* Theme toggle button */
+button {
+  padding: 0.5rem 0.85rem;
+  border: 1px solid var(--border-color);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent), var(--card-bg);
+  color: var(--text-color);
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.12s ease, background-color 0.12s ease, color 0.12s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(90deg, var(--accent-color), color-mix(in srgb, var(--accent-color) 70%, black));
+  color: #fff;
+}
+
+/* =====================================
+   CARD COMPONENT
+   ===================================== */
+
+/*
+   Card automatically adapts because
+   it references CSS variables.
+*/
+.card {
+  background: var(--card-bg);
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  transition: box-shadow 0.18s ease, transform 0.18s ease, border 0.18s ease;
+  box-shadow: 0 4px 10px rgba(16,24,40,0.04);
+}
+
+.card h2 {
+  margin-bottom: 0.5rem;
+  color: var(--accent-color);
+  font-size: 1.125rem;
+  letter-spacing: -0.02em;
+}
+
+/*
+   Accessible link styling
+*/
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* =====================================
+   LAYOUT HELPERS
+   ===================================== */
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  font-weight: 700;
+  color: var(--accent-color);
+  font-size: 1.125rem;
+}
+
+.meta {
+  color: color-mix(in srgb, var(--text-color) 70%, transparent);
+  font-size: 0.95rem;
+}
+
+/* Card grid for larger screens */
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 760px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Focus & accessibility */
+button:focus,
+a:focus {
+  outline: 3px solid color-mix(in srgb, var(--accent-color) 30%, transparent);
+  outline-offset: 3px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Small utility spacing */
+.spacer { height: 0.5rem; }
+
+/* Subtle hover lift for cards */
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(16,24,40,0.08);
+}
+
+/* Make header controls wrap on very small screens */
+@media (max-width:420px) {
+  header { flex-direction: column; align-items: stretch; gap: 0.75rem; }
+  .header-left { width: 100%; justify-content: space-between; }
+  button { width: 100%; justify-content: center; }
+}
