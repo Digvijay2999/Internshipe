@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SPA Router — Modern Navigation Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation header -->
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">SPA Router</span>
+      </div>
+      <nav class="nav">
+        <a href="/" class="nav-link active" data-link>Home</a>
+        <a href="/about" class="nav-link" data-link>About</a>
+        <a href="/services" class="nav-link" data-link>Services</a>
+        <a href="/contact" class="nav-link" data-link>Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main content container for dynamic routing -->
+  <main class="container">
+    <div id="app" class="app-content"></div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <h3>SPA Router Demo — Built with vanilla JavaScript</h3>
+    <p>&copy; Modern SPA Router | Made by Digvijay</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
