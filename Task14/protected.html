@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Protected - Auth Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="layout single">
+    <section class="panel-wrap">
+      <header class="brand-block">
+        <div class="brand-mark">🔐</div>
+        <h1 class="brand-title">Protected Area</h1>
+        <p class="brand-tag">You must be signed in to view this page</p>
+      </header>
+
+      <div class="card protected-card">
+        <h2>Protected Page</h2>
+        <p id="welcome"></p>
+        <div style="margin-top:1rem">
+          <button class="btn" id="logout">Log out</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Check session on load
+    (function(){
+      const email = localStorage.getItem('auth_session');
+      const users = JSON.parse(localStorage.getItem('auth_users')||'{}');
+      if(!email || !users[email]){
+        // Not authenticated - redirect to login
+        window.location.href = 'index.html';
+        return;
+      }
+      const user = users[email];
+      document.getElementById('welcome').textContent = `Hello, ${user.name} — you are authenticated.`;
+      document.getElementById('logout').addEventListener('click', ()=>{
+        localStorage.removeItem('auth_session');
+        window.location.href = 'index.html';
+      });
+    })();
+  </script>
+</body>
+</html>

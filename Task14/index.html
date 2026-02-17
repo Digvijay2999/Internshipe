@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login / Register Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="layout">
+    <aside class="visual">
+      <div class="visual-inner">
+        <svg width="180" height="180" viewBox="0 0 100 100" class="logo-mark" aria-hidden="true">
+          <defs>
+            <linearGradient id="g" x1="0" x2="1">
+              <stop stop-color="#60a5fa" offset="0"/>
+              <stop stop-color="#1e40af" offset="1"/>
+            </linearGradient>
+          </defs>
+          <circle cx="50" cy="50" r="40" fill="url(#g)" opacity="0.95" />
+          <path d="M30 60 L50 30 L70 60 Z" fill="rgba(255,255,255,0.9)" />
+        </svg>
+        <h2 class="visual-title">Welcome to Auth Demo</h2>
+        <p class="visual-sub">Fast, simple, frontend-only authentication demo using LocalStorage</p>
+      </div>
+    </aside>
+
+    <section class="panel-wrap">
+      <header class="brand-block">
+        <div class="brand-mark">🔐</div>
+        <h1 class="brand-title">Auth Demo</h1>
+        <p class="brand-tag">Login or create an account — demo only</p>
+      </header>
+
+      <div class="card auth-card">
+        <div class="tabs">
+          <button class="tab active" data-target="login">Sign in</button>
+          <button class="tab" data-target="register">Create account</button>
+        </div>
+
+        <div class="panel" id="login">
+          <form id="loginForm">
+            <div class="field-row">
+              <label>Email
+                <input type="email" name="email" required autocomplete="username">
+              </label>
+            </div>
+            <div class="field-row">
+              <label>Password
+                <input type="password" name="password" required autocomplete="current-password">
+              </label>
+            </div>
+            <div class="actions">
+              <button type="submit" class="btn primary">Sign In</button>
+            </div>
+            <div id="loginMsg" class="msg" aria-live="polite"></div>
+          </form>
+        </div>
+
+        <div class="panel hidden" id="register">
+          <form id="registerForm">
+            <div class="field-row">
+              <label>Full name
+                <input type="text" name="name" required autocomplete="name">
+              </label>
+            </div>
+            <div class="field-row">
+              <label>Email
+                <input type="email" name="email" required autocomplete="username">
+              </label>
+            </div>
+            <div class="field-row">
+              <label>Password
+                <input type="password" name="password" required minlength="6" autocomplete="new-password">
+              </label>
+            </div>
+            <div class="actions">
+              <button type="submit" class="btn">Sign Up</button>
+            </div>
+            <div id="regMsg" class="msg" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+
+      <footer class="meta">This demo stores data in LocalStorage. For production, use a server.</footer>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
