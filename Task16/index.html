@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Advanced user dashboard with search, filter, and analytics" />
+  <title>User Dashboard — Advanced Analytics</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-wrapper">
+    <header class="app-header">
+      <div class="header-content">
+        <div class="header-left">
+          <h1 class="app-title">👥 User Dashboard</h1>
+          <p class="app-subtitle">Advanced user management and analytics</p>
+        </div>
+        <div class="header-right">
+          <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">🌙</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <section class="stats-panel" aria-labelledby="stats-heading">
+        <h2 id="stats-heading" class="sr-only">User Statistics</h2>
+        <div class="stat-card">
+          <span class="stat-icon">👥</span>
+          <div class="stat-content">
+            <span class="stat-label">Total Users</span>
+            <span class="stat-value" id="totalUsers">0</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">🔍</span>
+          <div class="stat-content">
+            <span class="stat-label">Filtered</span>
+            <span class="stat-value" id="filteredCount">0</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">🏢</span>
+          <div class="stat-content">
+            <span class="stat-label">Companies</span>
+            <span class="stat-value" id="companyCount">0</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">📍</span>
+          <div class="stat-content">
+            <span class="stat-label">Cities</span>
+            <span class="stat-value" id="cityCount">0</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="controls-section" aria-labelledby="controls-heading">
+        <h2 id="controls-heading" class="sr-only">Search and Filter Options</h2>
+        <div class="controls-grid">
+          <div class="control-group">
+            <label for="searchInput">Search by name, email, or company</label>
+            <input type="text" id="searchInput" placeholder="Type to search..." aria-describedby="search-help">
+            <small id="search-help">Search is case-insensitive and instant</small>
+          </div>
+          <div class="control-group">
+            <label for="sortSelect">Sort by</label>
+            <select id="sortSelect" aria-label="Sort users">
+              <option value="name">Name</option>
+              <option value="email">Email</option>
+              <option value="company">Company</option>
+              <option value="city">City</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <label for="filterCity">Filter by city</label>
+            <select id="filterCity" aria-label="Filter by city">
+              <option value="">All Cities</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <label for="itemsPerPage">Items per page</label>
+            <select id="itemsPerPage" aria-label="Items per page">
+              <option value="5">5</option>
+              <option value="10" selected>10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+            </select>
+          </div>
+        </div>
+        <div class="controls-actions">
+          <button id="resetBtn" class="btn-secondary">🔄 Reset Filters</button>
+          <button id="exportBtn" class="btn-secondary">📥 Export as JSON</button>
+          <button id="clearCacheBtn" class="btn-secondary">🗑️ Clear Cache</button>
+        </div>
+      </section>
+
+      <section class="dashboard">
+        <div class="user-list-container">
+          <h2 class="list-title">Users</h2>
+          <div class="user-list" id="userList" role="list"></div>
+          <div class="pagination" aria-label="Pagination controls">
+            <button id="prevBtn" class="btn-pagination" aria-label="Previous page">← Prev</button>
+            <span class="page-info" id="pageInfo">Page 1</span>
+            <button id="nextBtn" class="btn-pagination" aria-label="Next page">Next →</button>
+          </div>
+        </div>
+
+        <aside class="user-detail-container">
+          <h2 class="detail-title">User Details</h2>
+          <div class="user-detail" id="userDetail" role="region" aria-live="polite">
+            <div class="empty-state">
+              <p>👆 Select a user to view details</p>
+            </div>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>User Dashboard Demo | <a href="#">API: JSONPlaceholder</a></p>
+      <h4>Made By Digvijay</h4>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
